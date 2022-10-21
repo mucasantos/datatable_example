@@ -29,9 +29,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Teste Table",
+      title: "Test Table",
       home: Scaffold(
-        appBar: AppBar(title: const Text("Teste Table")),
+        appBar: AppBar(title: const Text("Test Table")),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
