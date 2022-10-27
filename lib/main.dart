@@ -1,6 +1,12 @@
+import 'package:datatable_example/tela2.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(
+      const MaterialApp(
+        home: MyApp(),
+        title: "TEste Tabela",
+      ),
+    );
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -28,78 +34,51 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Test Table",
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Test Table")),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              TextField(
-                controller: nomeController,
-              ),
-              TextField(
-                controller: idadeController,
-              ),
-              TextField(
-                controller: funcaoController,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          dadosTabela.add(
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text(nomeController.text)),
-                                DataCell(Text(idadeController.text)),
-                                DataCell(Text(funcaoController.text)),
-                              ],
-                            ),
-                          );
-                        });
-                      },
-                      child: const Text('Salvar')),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          dadosTabela.clear();
-                        });
-                      },
-                      child: const Text('Apagar')),
-                ],
-              ),
-              DataTable(columns: const <DataColumn>[
-                DataColumn(
-                  label: Expanded(
-                    child: Text(
-                      'Name',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
+    return Scaffold(
+      appBar: AppBar(title: const Text("Test Table")),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: nomeController,
+            ),
+            TextField(
+              controller: idadeController,
+            ),
+            TextField(
+              controller: funcaoController,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(onPressed: () {}, child: const Text('Salvar')),
+                ElevatedButton(onPressed: () {}, child: const Text('Apagar')),
+                ElevatedButton(
+                  child: const Text('Open route'),
+                  onPressed: () {
+                    dadosTabela.add(
+                      DataRow(
+                        cells: <DataCell>[
+                          DataCell(Text(nomeController.text)),
+                          DataCell(Text(idadeController.text)),
+                          DataCell(Text(funcaoController.text)),
+                        ],
+                      ),
+                    );
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TelaNova(
+                                dadosTabela: dadosTabela,
+                              )),
+                    );
+                  },
                 ),
-                DataColumn(
-                  label: Expanded(
-                    child: Text(
-                      'Idade',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                ),
-                DataColumn(
-                  label: Expanded(
-                    child: Text(
-                      'Função',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                ),
-              ], rows: dadosTabela)
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
