@@ -11,36 +11,38 @@ class TelaNova extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("SEgunda tela")),
-      body: Column(
-        children: [
-          DataTable(columns: const <DataColumn>[
-            DataColumn(
-              label: Expanded(
-                child: Text(
-                  'Name',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+      appBar: AppBar(title: Text("Segunda tela")),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            DataTable(columns: const <DataColumn>[
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'Name',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
                 ),
               ),
-            ),
-            DataColumn(
-              label: Expanded(
-                child: Text(
-                  'Idade',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'Idade',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
                 ),
               ),
-            ),
-            DataColumn(
-              label: Expanded(
-                child: Text(
-                  'Função',
-                  style: TextStyle(fontStyle: FontStyle.italic),
+              DataColumn(
+                label: Expanded(
+                  child: Text(
+                    'Função',
+                    style: TextStyle(fontStyle: FontStyle.italic),
+                  ),
                 ),
               ),
-            ),
-          ], rows: dadosTabela!)
-        ],
+            ], rows: dadosTabela!)
+          ],
+        ),
       ),
     );
   }

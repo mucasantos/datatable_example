@@ -22,15 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   TextEditingController funcaoController = TextEditingController();
 
-  List<DataRow> dadosTabela = [
-    const DataRow(
-      cells: <DataCell>[
-        DataCell(Text('Janine')),
-        DataCell(Text('43')),
-        DataCell(Text('Professor')),
-      ],
-    ),
-  ];
+  List<DataRow> dadosTabela = [];
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +33,18 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           children: [
             TextField(
+              decoration: InputDecoration(
+                  hintText: "Digite o seu nome", labelText: "Nome"),
               controller: nomeController,
             ),
             TextField(
+              decoration:
+                  InputDecoration(hintText: "Sua idade", labelText: "Idade"),
               controller: idadeController,
             ),
             TextField(
+              decoration: InputDecoration(
+                  hintText: "Digite a sua função", labelText: "Função"),
               controller: funcaoController,
             ),
             Row(
@@ -66,6 +64,9 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                     );
+                    nomeController.text = "";
+                    idadeController.text = "";
+                    funcaoController.text = "";
 
                     Navigator.push(
                       context,
